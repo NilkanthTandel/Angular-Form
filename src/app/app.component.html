@@ -1,0 +1,30 @@
+
+<!-- Display table with data -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td>{{ contact.name }}</td>
+    <td>{{ contact.phoneNumber }}</td>
+    <td>{{ contact.address }}</td>
+    <td>
+      <button (click)="editContact(contact)">Edit</button>
+      <button (click)="deleteContact(contact)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<!-- Form for adding/editing contact -->
+<form (submit)="submitForm()">
+  <label>Name</label>
+  <input [(ngModel)]="currentContact.name" type="text" name="name" />
+  <label>Phone Number</label>
+  <input [(ngModel)]="currentContact.phoneNumber" type="text" name="phoneNumber" />
+  <label>Address</label>
+  <input [(ngModel)]="currentContact.address" type="text" name="address" />
+  <button type="submit">{{ editingContact ? 'Update' : 'Add' }}</button>
+</form>
